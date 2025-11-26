@@ -5,8 +5,6 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.response import Response
 from .permissions import *
-
-from .filters import PropertyFilter
 from .models import User, Property, ImageProperty, City, Booking, Review, Amenity
 from .serializers import ( UserSerializer, UserNameSerializer, ImagePropertySerializer, PropertyListSerializer,
                           PropertyDetailSerializer, UserRegisterSerializer, LoginSerializer,
@@ -15,8 +13,8 @@ from .serializers import ( UserSerializer, UserNameSerializer, ImagePropertySeri
 
 from .filters import PropertyFilter
 
-class Register(generics.CreateAPIView):
-    serializer_class = UserSerializer
+class RegisterView(generics.CreateAPIView):
+    serializer_class = UserRegisterSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
